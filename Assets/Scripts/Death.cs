@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Death : MonoBehaviour
     {
         if (Collider.gameObject.tag == "Player")
         {
-            Application.LoadLevel(1);
+            SceneManager.LoadScene(1);
         }
     }
 }
