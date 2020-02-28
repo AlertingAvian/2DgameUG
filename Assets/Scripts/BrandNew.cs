@@ -8,18 +8,18 @@ public class BrandNew : MonoBehaviour
     private float jumpTimer;
     private float turnTimer;
     private float wallJumpTimer;
-    
+
     private float lastImageXpos;
-   
-   
-   
+
+
+
 
     private int amountOfJumpsLeft;
     private int facingDirection = 1;
     private int lastWallJumpDirection;
 
     private bool isFacingRight = true;
-    private bool isWalking;
+    
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
@@ -30,11 +30,11 @@ public class BrandNew : MonoBehaviour
     private bool canMove;
     private bool canFlip;
     private bool hasWallJumped;
-   
-   // private bool canClimbLedge = false;
-   
+
+    // private bool canClimbLedge = false;
+
     private bool isDashing;
-    
+
     private bool Crouch;
 
     private Rigidbody2D rb;
@@ -62,7 +62,7 @@ public class BrandNew : MonoBehaviour
 
     public Transform groundCheck;
     public Transform wallCheck;
-    
+
 
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
@@ -96,15 +96,15 @@ public class BrandNew : MonoBehaviour
 
     private void CheckIfWallSliding()
     {
-        if (isTouchingWall && movementInputDirection == facingDirection )
+        if (isTouchingWall && movementInputDirection == facingDirection)
         {
             isWallSliding = true;
-           anim.SetBool("isWallSliding", true);
+            anim.SetBool("isWallSliding", true);
         }
         else
         {
             isWallSliding = false;
-            
+
         }
     }
 
@@ -113,20 +113,20 @@ public class BrandNew : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsWall);
 
-       if(isTouchingWall && !isGrounded)
+        if (isTouchingWall && !isGrounded)
         {
             isWallSliding = true;
             canWallJump = true;
             anim.SetBool("Up", false);
             anim.SetBool("isWallSliding", true);
         }
-       else if(isGrounded)
+        else if (isGrounded)
         {
             isWallSliding = false;
             canWallJump = false;
             anim.SetBool("isWallSliding", false);
         }
-       if (isWallSliding && !isGrounded)
+        if (isWallSliding && !isGrounded)
         {
             canWallJump = true;
             if (canWallJump && Input.GetButtonDown("Up"))
@@ -164,7 +164,7 @@ public class BrandNew : MonoBehaviour
         {
             checkJumpMultiplier = false;
             canWallJump = true;
-            
+
         }
 
         if (amountOfJumpsLeft <= 0)
@@ -179,23 +179,23 @@ public class BrandNew : MonoBehaviour
     }
     private void CheckCrouch()
     {
-        if(isGrounded && Input.GetButtonDown("Down"))
+        if (isGrounded && Input.GetButtonDown("Down"))
         {
             Crouch = true;
             anim.SetBool("Down", true);
-            if(Crouch)
+            if (Crouch)
             {
                 movementSpeed = 2.0f;
             }
-                  
+
         }
-        else if(Input.GetButtonUp("Down"))
+        else if (Input.GetButtonUp("Down"))
         {
             Crouch = false;
             anim.SetBool("Down", false);
             movementSpeed = 4.0f;
         }
-              
+
     }
     private void CheckMovementDirection()
     {
@@ -208,23 +208,16 @@ public class BrandNew : MonoBehaviour
             Flip();
         }
 
-        if (Mathf.Abs(rb.velocity.x) >= 0.01f)
-        {
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
-        }
+       
     }
 
     private void UpdateAnimations()
     {
-        anim.SetBool("isWalking", isWalking);
+       
         anim.SetBool("isGrounded", isGrounded);
-        anim.SetFloat("Up", rb.velocity.y);
+        //anim.SetBool("Up", rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
-
+        
     }
 
     private void CheckInput()
@@ -237,13 +230,13 @@ public class BrandNew : MonoBehaviour
             if (isGrounded || (amountOfJumpsLeft > 0 && !isTouchingWall))
             {
                 NormalJump();
-               
+
             }
             else
             {
                 jumpTimer = jumpTimerSet;
                 isAttemptingToJump = true;
-               
+
             }
         }
 
@@ -273,19 +266,19 @@ public class BrandNew : MonoBehaviour
         {
             checkJumpMultiplier = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
-            
+
         }
 
     }
 
-   
+
 
     public int GetFacingDirection()
     {
         return facingDirection;
     }
 
-    
+
 
     private void CheckJump()
     {
@@ -298,9 +291,9 @@ public class BrandNew : MonoBehaviour
             }
             else if (isGrounded)
             {
-                
+
                 NormalJump();
-     
+
             }
         }
 
@@ -338,37 +331,37 @@ public class BrandNew : MonoBehaviour
             checkJumpMultiplier = true;
             anim.SetBool("Up", true);
         }
-        
+
     }
 
     private void WallJump()
     {
-       // if (canWallJump)
-       // {
+        // if (canWallJump)
+        // {
 
-          //  rb.velocity = new Vector2(rb.velocity.x, 0.0f);
-         //   isWallSliding = false;
-           // amountOfJumpsLeft = amountOfJumps;
-           // amountOfJumpsLeft--;
-           // Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
-           // rb.AddForce(forceToAdd, ForceMode2D.Impulse);
-           // jumpTimer = 0;
-           // isAttemptingToJump = false;
-          //  checkJumpMultiplier = true;
-           // turnTimer = 0;
-           // canMove = true;
-           // canFlip = true;
-           // hasWallJumped = true;
-           // wallJumpTimer = wallJumpTimerSet;
-           // lastWallJumpDirection = -facingDirection;
-            
-       // }
+        //  rb.velocity = new Vector2(rb.velocity.x, 0.0f);
+        //   isWallSliding = false;
+        // amountOfJumpsLeft = amountOfJumps;
+        // amountOfJumpsLeft--;
+        // Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
+        // rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+        // jumpTimer = 0;
+        // isAttemptingToJump = false;
+        //  checkJumpMultiplier = true;
+        // turnTimer = 0;
+        // canMove = true;
+        // canFlip = true;
+        // hasWallJumped = true;
+        // wallJumpTimer = wallJumpTimerSet;
+        // lastWallJumpDirection = -facingDirection;
+
+        // }
     }
 
     private void ApplyMovement()
     {
 
-        if (!isGrounded && !isWallSliding && movementInputDirection == 0 )
+        if (!isGrounded && !isWallSliding && movementInputDirection == 0)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
         }
@@ -380,11 +373,11 @@ public class BrandNew : MonoBehaviour
 
         if (isWallSliding)
         {
-            
+
             if (rb.velocity.y < -wallSlideSpeed)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-                
+
             }
         }
     }
@@ -401,7 +394,7 @@ public class BrandNew : MonoBehaviour
 
     private void Flip()
     {
-        if (!isWallSliding && canFlip )
+        if (!isWallSliding && canFlip)
         {
             facingDirection *= -1;
             isFacingRight = !isFacingRight;
