@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrandNew : MonoBehaviour
+public class BrandNewPlayer : MonoBehaviour
 {
     private float movementInputDirection;
     private float jumpTimer;
@@ -19,7 +19,7 @@ public class BrandNew : MonoBehaviour
     private int lastWallJumpDirection;
 
     private bool isFacingRight = true;
-    
+
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
@@ -33,7 +33,7 @@ public class BrandNew : MonoBehaviour
 
     // private bool canClimbLedge = false;
 
-    
+
 
     private bool Crouch;
 
@@ -129,14 +129,14 @@ public class BrandNew : MonoBehaviour
         if (isWallSliding && !isGrounded)
         {
             canWallJump = true;
-            if (canWallJump && Input.GetButtonDown("Up"))
+            if (canWallJump && Input.GetButtonDown("Jump"))
             {
 
                 rb.velocity = new Vector2(rb.velocity.x, 0.5f);
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
-                 Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
+                Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
                 rb.AddForce(forceToAdd, ForceMode2D.Impulse);
                 jumpTimer = 0;
                 isAttemptingToJump = false;
@@ -147,7 +147,7 @@ public class BrandNew : MonoBehaviour
                 hasWallJumped = true;
                 wallJumpTimer = wallJumpTimerSet;
                 lastWallJumpDirection = -facingDirection;
-                 
+
 
             }
         }
@@ -180,7 +180,7 @@ public class BrandNew : MonoBehaviour
     }
     private void CheckCrouch()
     {
-        if (isGrounded && Input.GetButtonDown("Down"))
+        if (isGrounded && Input.GetButtonDown("crouch"))
         {
             Crouch = true;
             anim.SetBool("Down", true);
@@ -190,7 +190,7 @@ public class BrandNew : MonoBehaviour
             }
 
         }
-        else if (Input.GetButtonUp("Down"))
+        else if (Input.GetButtonUp("crouch"))
         {
             Crouch = false;
             anim.SetBool("Down", false);
@@ -209,24 +209,24 @@ public class BrandNew : MonoBehaviour
             Flip();
         }
 
-       
+
     }
 
     private void UpdateAnimations()
     {
         anim.SetFloat("speed", rb.velocity.x);
         anim.SetBool("isGrounded", isGrounded);
-        anim.SetFloat ("yVelocity" , rb.velocity.y);
+        anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
-        
+
     }
 
     private void CheckInput()
     {
-        movementInputDirection = Input.GetAxisRaw("Move") * movementSpeed;
+        movementInputDirection = Input.GetAxisRaw("Horizontal") * movementSpeed;
         anim.SetFloat("speed", Mathf.Abs(movementInputDirection));
 
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Jump"))
         {
             if (isGrounded || (amountOfJumpsLeft > 0 && !isTouchingWall))
             {
@@ -241,7 +241,7 @@ public class BrandNew : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Move") && isTouchingWall)
+        if (Input.GetButtonDown("Horizontal") && isTouchingWall)
         {
             if (!isGrounded && movementInputDirection != facingDirection)
             {
@@ -251,7 +251,7 @@ public class BrandNew : MonoBehaviour
                 turnTimer = turnTimerSet;
             }
         }
-        
+
 
 
         if (turnTimer >= 0)
@@ -265,7 +265,7 @@ public class BrandNew : MonoBehaviour
             }
         }
 
-        if (checkJumpMultiplier && !Input.GetButton("Up"))
+        if (checkJumpMultiplier && !Input.GetButton("Jump"))
         {
             checkJumpMultiplier = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
