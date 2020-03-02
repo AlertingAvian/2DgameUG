@@ -7386,7 +7386,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 1c3c5d2960fc4f04dbed5d0be70de488, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -7447,22 +7447,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfJumps: 1
   movementSpeed: 4
-  jumpForce: 16
+  jumpForce: 14
   groundCheckRadius: 0.2
   wallCheckDistance: 0.4
-  wallSlideSpeed: 0.1
-  movementForceInAir: 0
-  airDragMultiplier: 0.95
-  variableJumpHeightMultiplier: 0.5
-  wallHopForce: 40
+  wallSlideSpeed: 2
+  movementForceInAir: 2
+  airDragMultiplier: 1
+  variableJumpHeightMultiplier: 0.3
+  wallHopForce: 10
   wallJumpForce: 6
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
   crouchSpeed: 2
-  wallHopDirection: {x: -2, y: 0.5}
-  wallJumpDirection: {x: 2, y: 2}
+  wallHopDirection: {x: -3, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
   groundCheck: {fileID: 1981644040}
   wallCheck: {fileID: 1712770939}
   whatIsGround:

@@ -72,8 +72,8 @@ public class BrandNew : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
-       // wallHopDirection.Normalize();
-       // wallJumpDirection.Normalize();
+       //wallHopDirection.Normalize();
+        //wallJumpDirection.Normalize();
     }
 
     // Update is called once per frame
@@ -136,7 +136,7 @@ public class BrandNew : MonoBehaviour
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
-                 Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
+                 Vector2 forceToAdd = new Vector2(wallJumpForce *-- wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
                 rb.AddForce(forceToAdd, ForceMode2D.Impulse);
                 jumpTimer = 0;
                 isAttemptingToJump = false;
@@ -147,7 +147,7 @@ public class BrandNew : MonoBehaviour
                 hasWallJumped = true;
                 wallJumpTimer = wallJumpTimerSet;
                 lastWallJumpDirection = -facingDirection;
-               
+                Flip();
 
             }
         }
@@ -225,6 +225,7 @@ public class BrandNew : MonoBehaviour
     {
         movementInputDirection = Input.GetAxisRaw("Move") * movementSpeed;
         anim.SetFloat("speed", Mathf.Abs(movementInputDirection));
+
 
         if (Input.GetButtonDown("Up"))
         {
