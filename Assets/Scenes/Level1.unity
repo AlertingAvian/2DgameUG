@@ -976,7 +976,6 @@ GameObject:
   - component: {fileID: 1382395921}
   - component: {fileID: 1382395920}
   - component: {fileID: 1382395919}
-  - component: {fileID: 1382395923}
   m_Layer: 0
   m_Name: frog-idle-1
   m_TagString: Untagged
@@ -1083,27 +1082,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1382395923
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382395918}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 2
 --- !u!1 &1592792577
 GameObject:
   m_ObjectHideFlags: 0
@@ -7422,13 +7400,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 1837661702}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1c3c5d2960fc4f04dbed5d0be70de488, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029135704, y: -0.53416514}
+  m_Offset: {x: -0.02986741, y: -0.53416514}
   serializedVersion: 2
-  m_Radius: 0.5080347
+  m_Radius: 0.507303
 --- !u!61 &1837661708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7438,11 +7416,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 1837661702}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1c3c5d2960fc4f04dbed5d0be70de488, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028158367, y: 0.038912177}
+  m_Offset: {x: -0.04001236, y: -0.02728486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7453,7 +7431,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8735479, y: 0.6857164}
+  m_Size: {x: 0.73720646, y: 0.5533223}
   m_EdgeRadius: 0
 --- !u!114 &1837661709
 MonoBehaviour:
@@ -7471,20 +7449,20 @@ MonoBehaviour:
   movementSpeed: 4
   jumpForce: 16
   groundCheckRadius: 0.2
-  wallCheckDistance: 0.2
-  wallSlideSpeed: 2
-  movementForceInAir: 2
+  wallCheckDistance: 0.4
+  wallSlideSpeed: 0.1
+  movementForceInAir: 0
   airDragMultiplier: 0.95
   variableJumpHeightMultiplier: 0.5
-  wallHopForce: 16
-  wallJumpForce: 14
+  wallHopForce: 40
+  wallJumpForce: 6
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
   crouchSpeed: 2
-  wallHopDirection: {x: 1, y: 0.5}
-  wallJumpDirection: {x: 1, y: 2}
+  wallHopDirection: {x: -2, y: 0.5}
+  wallJumpDirection: {x: 2, y: 2}
   groundCheck: {fileID: 1981644040}
   wallCheck: {fileID: 1712770939}
   whatIsGround:
@@ -7593,12 +7571,12 @@ MonoBehaviour:
   groundCheckRadius: 0.2
   wallCheckDistance: 0.1
   wallSlideSpeed: 2
-  movementForceInAir: 16
+  movementForceInAir: 2
   airDragMultiplier: 0.95
   variableJumpHeightMultiplier: 0.5
   wallHopForce: 16
   wallJumpForce: 14
-  jumpTimerSet: 0.15
+  jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
@@ -7662,7 +7640,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2115087764}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1c3c5d2960fc4f04dbed5d0be70de488, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -7678,7 +7656,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2115087764}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1c3c5d2960fc4f04dbed5d0be70de488, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

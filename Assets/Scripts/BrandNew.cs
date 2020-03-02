@@ -72,8 +72,8 @@ public class BrandNew : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
-        wallHopDirection.Normalize();
-        wallJumpDirection.Normalize();
+       // wallHopDirection.Normalize();
+       // wallJumpDirection.Normalize();
     }
 
     // Update is called once per frame
@@ -132,7 +132,7 @@ public class BrandNew : MonoBehaviour
             if (canWallJump && Input.GetButtonDown("Up"))
             {
 
-                rb.velocity = new Vector2(rb.velocity.x, 0.5f);
+                rb.velocity = new Vector2(-rb.velocity.x, 0.5f);
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
@@ -147,7 +147,7 @@ public class BrandNew : MonoBehaviour
                 hasWallJumped = true;
                 wallJumpTimer = wallJumpTimerSet;
                 lastWallJumpDirection = -facingDirection;
-                 
+               
 
             }
         }
