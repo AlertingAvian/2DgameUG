@@ -16,13 +16,6 @@ public class Quit : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		if (Application.isEditor)
-        {
-			Debug.Break();
-        }
-		else
-        {
-			Application.Quit();
-        }
+		SceneManager.LoadScene(0);
 	}
 }
