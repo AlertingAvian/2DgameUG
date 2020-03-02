@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: test
+  m_Name: Tilemap Atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -304,5 +304,5 @@ SpriteAtlas:
   - tileset-sliced_127
   - tileset-sliced_124
   - tileset-sliced_125
-  m_Tag: test
+  m_Tag: Tilemap Atlas
   m_IsVariant: 0
