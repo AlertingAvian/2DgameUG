@@ -16,6 +16,6 @@ public class Restart : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene(2);
 	}
 }
