@@ -39,9 +39,9 @@ public class BrandNew : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-
+    public Transform CeilingCheck;
     public int amountOfJumps = 1;
-
+    const float CeilingRadius = .2f;
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
@@ -55,6 +55,7 @@ public class BrandNew : MonoBehaviour
     public float jumpTimerSet = 0.15f;
     public float turnTimerSet = 0.1f;
     public float wallJumpTimerSet = 0.5f;
+    public float movementSpeedTimer = 0.5f;
     public float distanceBetweenImages;
     public float crouchSpeed = 0.0f;
     public Vector2 wallHopDirection;
@@ -62,7 +63,7 @@ public class BrandNew : MonoBehaviour
     public Transform SlideColl;
     public Transform groundCheck;
     public Transform wallCheck;
-
+    public GameObject other;
 
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
@@ -96,7 +97,7 @@ public class BrandNew : MonoBehaviour
 
     private void CheckIfWallSliding()
     {
-        if (isTouchingWall && movementInputDirection == facingDirection)
+        if (isTouchingWall)
         {
             isWallSliding = true;
             anim.SetBool("isWallSliding", true);
@@ -132,11 +133,11 @@ public class BrandNew : MonoBehaviour
             if (canWallJump && Input.GetButtonDown("Up"))
             {
 
-                rb.velocity = new Vector2(rb.velocity.x, 0.5f);
+                rb.velocity = new Vector2(-rb.velocity.x, 0.5f);
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
-                 Vector2 forceToAdd = new Vector2(wallJumpForce * -wallJumpDirection.x *movementInputDirection , wallJumpForce * wallJumpDirection.y);
+                 Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x *movementInputDirection , wallJumpForce * wallJumpDirection.y);
                 rb.AddForce(forceToAdd, ForceMode2D.Impulse);
                 jumpTimer = 0;
                 isAttemptingToJump = false;
@@ -186,19 +187,26 @@ public class BrandNew : MonoBehaviour
             anim.SetBool("Down", true);
             if (Slide)
             {
-                //SlideColl.enabled = true;
-                
+                movementSpeed = 5f;
+                movementSpeedTimer = 0.5f;
+
+            }
+            else 
+            {
+                Slide = false;
+                anim.SetBool("Down", false);
+                movementSpeed = 4f;
+             
+            }
+            if (Physics2D.OverlapCircle(CeilingCheck.position, CeilingRadius, whatIsGround))
+            {
+                if (Input.GetButtonUp("Down"))
+                Slide = true;
+                anim.SetBool("Down", true);
 
             }
 
         }
-        else if (Input.GetButtonUp("Down"))
-        {
-            Slide = false;
-            anim.SetBool("Down", false);
-            
-        }
-
     }
     private void CheckMovementDirection()
     {
@@ -216,7 +224,7 @@ public class BrandNew : MonoBehaviour
 
     private void UpdateAnimations()
     {
-        anim.SetFloat("speed", rb.velocity.x);
+        
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat ("yVelocity" , rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
