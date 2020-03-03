@@ -7461,8 +7461,14 @@ MonoBehaviour:
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
   crouchSpeed: 2
+<<<<<<< Updated upstream
   wallHopDirection: {x: -2, y: 0.5}
   wallJumpDirection: {x: 2, y: 2}
+=======
+  wallHopDirection: {x: 1, y: 0.5}
+  wallJumpDirection: {x: 2, y: 0.5}
+  SlideColl: {fileID: 0}
+>>>>>>> Stashed changes
   groundCheck: {fileID: 1981644040}
   wallCheck: {fileID: 1712770939}
   whatIsGround:
@@ -7540,6 +7546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115087771}
+  - component: {fileID: 2115087772}
   - component: {fileID: 2115087770}
   - component: {fileID: 2115087769}
   - component: {fileID: 2115087768}
@@ -7739,3 +7746,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115087772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115087764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f84d444dc40254b8fca01edd072e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  twoPlayer: 1
