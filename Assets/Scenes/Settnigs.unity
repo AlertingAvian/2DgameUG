@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 1701279874}
   - component: {fileID: 1701279873}
   - component: {fileID: 1701279872}
+  - component: {fileID: 1701279876}
   m_Layer: 5
   m_Name: PlayersButton
   m_TagString: Untagged
@@ -988,6 +989,26 @@ MonoBehaviour:
   yourButton: {fileID: 1701279872}
   txt: {fileID: 1275417242}
   twoPlayer: 0
+  playerButton: {fileID: 1701279876}
+--- !u!95 &1701279876
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701279870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32d91ffe10d18664ab526976114db8fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2080316441
 GameObject:
   m_ObjectHideFlags: 0

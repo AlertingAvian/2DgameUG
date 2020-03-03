@@ -186,7 +186,7 @@ public class BrandNew : MonoBehaviour
             anim.SetBool("Down", true);
             if (Slide)
             {
-                SlideColl.enabled = true;
+                //SlideColl.enabled = true;
                 
 
             }
