@@ -19,7 +19,7 @@ public class BrandNew : MonoBehaviour
     private int lastWallJumpDirection;
 
     private bool isFacingRight = true;
-    
+    private bool Slide = false;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
@@ -85,7 +85,7 @@ public class BrandNew : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckJump();
-        CheckCrouch();
+        CheckSlide();
     }
 
     private void FixedUpdate()
@@ -132,11 +132,11 @@ public class BrandNew : MonoBehaviour
             if (canWallJump && Input.GetButtonDown("Up"))
             {
 
-                rb.velocity = new Vector2(-rb.velocity.x, 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, 0.5f);
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
-                 Vector2 forceToAdd = new Vector2(wallJumpForce *-- wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
+                 Vector2 forceToAdd = new Vector2(wallJumpForce * -wallJumpDirection.x *movementInputDirection , wallJumpForce * wallJumpDirection.y);
                 rb.AddForce(forceToAdd, ForceMode2D.Impulse);
                 jumpTimer = 0;
                 isAttemptingToJump = false;
@@ -147,7 +147,7 @@ public class BrandNew : MonoBehaviour
                 hasWallJumped = true;
                 wallJumpTimer = wallJumpTimerSet;
                 lastWallJumpDirection = -facingDirection;
-                Flip();
+                
 
             }
         }
@@ -178,13 +178,13 @@ public class BrandNew : MonoBehaviour
         }
 
     }
-    private void CheckCrouch()
+    private void CheckSlide()
     {
         if (isGrounded && Input.GetButtonDown("Down"))
         {
-            Crouch = true;
+            Slide = true;
             anim.SetBool("Down", true);
-            if (Crouch)
+            if (Slide)
             {
                 movementSpeed = 2.0f;
             }
@@ -192,7 +192,7 @@ public class BrandNew : MonoBehaviour
         }
         else if (Input.GetButtonUp("Down"))
         {
-            Crouch = false;
+            Slide = false;
             anim.SetBool("Down", false);
             movementSpeed = 4.0f;
         }
