@@ -13,7 +13,7 @@ public class BrandNew : MonoBehaviour
 
 
 
-
+    
     private int amountOfJumpsLeft;
     private int facingDirection = 1;
     private int lastWallJumpDirection;
@@ -59,7 +59,7 @@ public class BrandNew : MonoBehaviour
     public float crouchSpeed = 0.0f;
     public Vector2 wallHopDirection;
     public Vector2 wallJumpDirection;
-
+    public Transform SlideColl;
     public Transform groundCheck;
     public Transform wallCheck;
 
@@ -186,7 +186,9 @@ public class BrandNew : MonoBehaviour
             anim.SetBool("Down", true);
             if (Slide)
             {
-                movementSpeed = 2.0f;
+                SlideColl.enabled = true;
+                
+
             }
 
         }
@@ -194,7 +196,7 @@ public class BrandNew : MonoBehaviour
         {
             Slide = false;
             anim.SetBool("Down", false);
-            movementSpeed = 4.0f;
+            
         }
 
     }
@@ -404,6 +406,7 @@ public class BrandNew : MonoBehaviour
             isFacingRight = !isFacingRight;
             transform.Rotate(0.0f, 180.0f, 0.0f);
         }
+
     }
 
     private void OnDrawGizmos()
