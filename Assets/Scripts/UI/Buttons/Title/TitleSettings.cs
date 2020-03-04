@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TitleStart : MonoBehaviour
+public class TitleSettings : MonoBehaviour
 {
 	public Button yourButton;
 
@@ -16,6 +16,6 @@ public class TitleStart : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		SceneManager.LoadScene(3);
+		SceneManager.LoadScene(2);
 	}
 }
