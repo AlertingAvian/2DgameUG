@@ -7576,7 +7576,7 @@ MonoBehaviour:
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
-  movementSpeedTimer: 0.5
+  movementSpeedTimer: 0.0157375
   distanceBetweenImages: 0
   crouchSpeed: 2
   wallHopDirection: {x: 1, y: 0.5}
@@ -7584,7 +7584,7 @@ MonoBehaviour:
   SlideColl: {fileID: 0}
   groundCheck: {fileID: 1981644040}
   wallCheck: {fileID: 1712770939}
-  other: {fileID: 582347294}
+  other: {fileID: 1981644039}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 567
@@ -7688,22 +7688,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountOfJumps: 1
   movementSpeed: 4
-  jumpForce: 16
+  jumpForce: 14
   groundCheckRadius: 0.2
   wallCheckDistance: 0.1
   wallSlideSpeed: 2
-  movementForceInAir: 2
-  airDragMultiplier: 0.95
-  variableJumpHeightMultiplier: 0.5
-  wallHopForce: 16
-  wallJumpForce: 14
+  movementForceInAir: 1
+  airDragMultiplier: 1
+  variableJumpHeightMultiplier: 0.6
+  wallHopForce: 10
+  wallJumpForce: 20
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
   crouchSpeed: 2
   wallHopDirection: {x: 1, y: 0.5}
-  wallJumpDirection: {x: 1, y: 2}
+  wallJumpDirection: {x: 1, y: 0.5}
   groundCheck: {fileID: 2058767975}
   wallCheck: {fileID: 603307111}
   whatIsGround:

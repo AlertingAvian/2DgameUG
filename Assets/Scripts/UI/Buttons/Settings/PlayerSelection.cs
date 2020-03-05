@@ -27,7 +27,7 @@ public class PlayerSelection : MonoBehaviour
 		playerButton.SetBool("twoPlayer", twoPlayer);
     }
 
-	void SaveFile()
+	public void SaveFile()
     {
 		string destination = Application.persistentDataPath + "/settings.dat";
 		FileStream file;
@@ -40,24 +40,23 @@ public class PlayerSelection : MonoBehaviour
 		file.Close();
     }
 
-	void TaskOnClick()
-	{
-		if (twoPlayer)
+    public void TaskOnClick()
+    {
+        if (twoPlayer)
         {
-			twoPlayer = false;
-			txt.text = "One Player";
-			Debug.Log("one");
-			playerButton.SetBool("twoPlayer",true);
+            twoPlayer = false;
+            txt.text = "One Player";
+            Debug.Log("one");
+            playerButton.SetBool("twoPlayer", true);
         }
-		else
+        else
         {
-			twoPlayer = true;
-			txt.text = "Two Player";
-			Debug.Log("two");
-      playerButton.SetBool("twoPlayer",false);
-		}
-		SaveFile();
-		}
-
-	}
+            twoPlayer = true;
+            txt.text = "Two Player";
+            Debug.Log("two");
+            playerButton.SetBool("twoPlayer", false);
+        }
+        SaveFile();
+    }
+     
 }

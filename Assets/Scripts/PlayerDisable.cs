@@ -11,33 +11,33 @@ public class PlayerDisable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadFile();
+        //LoadFile();
         
     }
-    void LoadFile()
-    {
-        string destination = Application.persistentDataPath + "/save.dat";
-        FileStream file;
+    //void LoadFile()
+    //{
+    //    string destination = Application.persistentDataPath + "/save.dat";
+    //    FileStream file;
 
-        if (File.Exists(destination)) file = File.OpenRead(destination);
-        else
-        {
-            Debug.LogError("File not found");
-            return;
-        }
+    //    if (File.Exists(destination)) file = File.OpenRead(destination);
+    //    else
+    //    {
+    //        Debug.LogError("File not found");
+    //        return;
+    //    }
 
-        BinaryFormatter bf = new BinaryFormatter();
-        bool data = (bool)bf.Deserialize(file);
-        Debug.Log(data);
-        file.Close();
+    //    BinaryFormatter bf = new BinaryFormatter();
+    //    bool data = (bool)bf.Deserialize(file);
+    //    Debug.Log(data);
+    //    file.Close();
 
-        twoPlayer = data;
+    //    twoPlayer = data;
 
-        file.Close();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(twoPlayer);
-    }
+    //    file.Close();
+    //}
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    Debug.Log(twoPlayer);
+    //}
 }

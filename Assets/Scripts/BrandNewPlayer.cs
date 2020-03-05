@@ -19,7 +19,7 @@ public class BrandNewPlayer : MonoBehaviour
     private int lastWallJumpDirection;
 
     private bool isFacingRight = true;
-
+    private bool Slide = false;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
@@ -72,8 +72,8 @@ public class BrandNewPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
-        wallHopDirection.Normalize();
-        wallJumpDirection.Normalize();
+        //wallHopDirection.Normalize();
+        //wallJumpDirection.Normalize();
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class BrandNewPlayer : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckJump();
-        CheckCrouch();
+        CheckSlide();
     }
 
     private void FixedUpdate()
@@ -107,8 +107,18 @@ public class BrandNewPlayer : MonoBehaviour
 
         }
     }
-
-    private void CheckSurroundings()
+    private void CheckMovementDirection()
+    {
+        if (isFacingRight && movementInputDirection < 0)
+        {
+            Flip();
+        }
+        else if (!isFacingRight && movementInputDirection > 0)
+        {
+            Flip();
+        }
+    }
+        private void CheckSurroundings()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsWall);
@@ -178,43 +188,45 @@ public class BrandNewPlayer : MonoBehaviour
         }
 
     }
-    private void CheckCrouch()
+    private void CheckSlide()
     {
         if (isGrounded && Input.GetButtonDown("crouch"))
         {
-            Crouch = true;
+
+
+            Slide = true;
             anim.SetBool("Down", true);
-            if (Crouch)
-            {
-                movementSpeed = 2.0f;
-            }
+            movementSpeed = crouchSpeed;
+            crouchSpeed = 5.0f;
+
+
 
         }
         else if (Input.GetButtonUp("crouch"))
         {
-            Crouch = false;
+            Slide = false;
             anim.SetBool("Down", false);
-            movementSpeed = 4.0f;
-        }
+            movementSpeed = 4f;
 
+        }
     }
-    private void CheckMovementDirection()
-    {
-        if (isFacingRight && movementInputDirection < 0)
+        private void MovementDirection()
         {
-            Flip();
-        }
-        else if (!isFacingRight && movementInputDirection > 0)
-        {
-            Flip();
-        }
+            if (isFacingRight && movementInputDirection < 0)
+            {
+                Flip();
+            }
+            else if (!isFacingRight && movementInputDirection > 0)
+            {
+                Flip();
+            }
 
-
-    }
+        }
+    
 
     private void UpdateAnimations()
     {
-        anim.SetFloat("speed", rb.velocity.x);
+       
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
