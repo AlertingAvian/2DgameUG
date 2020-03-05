@@ -7872,9 +7872,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f84d444dc40254b8fca01edd072e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  twoPlayer: 1
-  player: {fileID: 2115087764}
-=======
   twoPlayer: 0
->>>>>>> cfbb09a257f67d037dbd80c9b54756d17bf7b4ab
+  player: {fileID: 2115087764}
