@@ -7873,3 +7873,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   twoPlayer: 1
+  player: {fileID: 2115087764}
