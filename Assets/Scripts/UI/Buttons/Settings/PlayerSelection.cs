@@ -12,7 +12,7 @@ public class PlayerSelection : MonoBehaviour
 	public Button yourButton;
 	public Text txt;
 
-	public Animator playerButton;
+	public Animator playersButton;
 	public bool twoPlayer = false;
 
 	void Start()
@@ -24,7 +24,7 @@ public class PlayerSelection : MonoBehaviour
 
 	void Update()
     {
-		playerButton.SetBool("twoPlayer", twoPlayer);
+		playersButton.SetBool("twoPlayer", twoPlayer);
     }
 
 	public void SaveFile()
@@ -47,14 +47,14 @@ public class PlayerSelection : MonoBehaviour
             twoPlayer = false;
             txt.text = "One Player";
             Debug.Log("one");
-            playerButton.SetBool("twoPlayer", true);
+            playersButton.SetBool("twoPlayer", true);
         }
         else
         {
             twoPlayer = true;
             txt.text = "Two Player";
             Debug.Log("two");
-            playerButton.SetBool("twoPlayer", false);
+            playersButton.SetBool("twoPlayer", false);
         }
         SaveFile();
     }
