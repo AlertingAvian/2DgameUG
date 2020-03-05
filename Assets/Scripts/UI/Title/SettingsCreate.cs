@@ -3,29 +3,40 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerDisable : MonoBehaviour
+public class SettingsCreate : MonoBehaviour
 {
-    public bool twoPlayer = true;
-    public GameObject player;
+
+    public bool twoPlayer = false;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadFile();
-        Debug.Log(twoPlayer);
+        SaveFile();
     }
+
+    public void SaveFile()
+    {
+        string destination = Application.persistentDataPath + "/settings.dat";
+        FileStream file;
+        if (File.Exists(destination)) file = File.OpenWrite(destination);
+        else file = File.Create(destination);
+
+        bool data = twoPlayer;
+        BinaryFormatter bf = new BinaryFormatter();
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
     void LoadFile()
     {
         string destination = Application.persistentDataPath + "/settings.dat";
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenRead(destination);
-        else
-        {
-            Debug.LogError("File not found");
-            return;
-        }
+        else file = File.Create(destination);
 
         BinaryFormatter bf = new BinaryFormatter();
         bool data = (bool)bf.Deserialize(file);
@@ -34,11 +45,5 @@ public class PlayerDisable : MonoBehaviour
         twoPlayer = data;
 
         file.Close();
-        Debug.Log(twoPlayer);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        player.SetActive(twoPlayer);
     }
 }

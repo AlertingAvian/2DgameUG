@@ -11,7 +11,6 @@ public class PlayerSelection : MonoBehaviour
 {
 	public Button yourButton;
 	public Text txt;
-
 	public Animator playersButton;
 	public bool twoPlayer = false;
 
@@ -19,12 +18,21 @@ public class PlayerSelection : MonoBehaviour
 	{
 		Button btn = yourButton.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
+        LoadFile();
 		SaveFile();
-	}
+    }
 
 	void Update()
     {
-		playersButton.SetBool("twoPlayer", twoPlayer);
+		playersButton.SetBool("twoPlayer", !twoPlayer);
+        if (twoPlayer)
+        {
+            txt.text = "Two Player";
+        }
+        else
+        {
+            txt.text = "One Player";
+        }
     }
 
 	public void SaveFile()
@@ -40,21 +48,34 @@ public class PlayerSelection : MonoBehaviour
 		file.Close();
     }
 
+    void LoadFile()
+    {
+        string destination = Application.persistentDataPath + "/settings.dat";
+        FileStream file;
+
+        if (File.Exists(destination)) file = File.OpenRead(destination);
+        else file = File.Create(destination);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        bool data = (bool)bf.Deserialize(file);
+        file.Close();
+
+        twoPlayer = data;
+
+        file.Close();
+    }
+
     public void TaskOnClick()
     {
         if (twoPlayer)
         {
             twoPlayer = false;
             txt.text = "One Player";
-            Debug.Log("one");
-            playersButton.SetBool("twoPlayer", true);
         }
         else
         {
             twoPlayer = true;
             txt.text = "Two Player";
-            Debug.Log("two");
-            playersButton.SetBool("twoPlayer", false);
         }
         SaveFile();
     }
