@@ -47,17 +47,17 @@ public class PlayerSelection : MonoBehaviour
 			twoPlayer = false;
 			txt.text = "One Player";
 			Debug.Log("one");
-			playerButton.SetBool("twoPlayer",true);
+			SaveFile();
         }
 		else
         {
 			twoPlayer = true;
 			txt.text = "Two Player";
 			Debug.Log("two");
-      playerButton.SetBool("twoPlayer",false);
+			SaveFile();
 		}
-		SaveFile();
+		
 		}
 
-	}
 }
+

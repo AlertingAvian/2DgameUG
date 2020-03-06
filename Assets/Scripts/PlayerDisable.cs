@@ -7,16 +7,20 @@ using UnityEngine;
 public class PlayerDisable : MonoBehaviour
 {
     public bool twoPlayer = true;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadFile();
-        
+        Debug.Log(twoPlayer);
+        player.SetActive(twoPlayer);
+
     }
     void LoadFile()
     {
-        string destination = Application.persistentDataPath + "/save.dat";
+        string destination = Application.persistentDataPath + "/settings.dat";
+        Debug.Log(destination);
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenRead(destination);
@@ -38,6 +42,6 @@ public class PlayerDisable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(twoPlayer);
+        
     }
 }
