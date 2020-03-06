@@ -27,10 +27,10 @@ public class EnemyBasic : MonoBehaviour
         Vector2 lineCastPos = myTrans.position.toVector2() - myTrans.right.toVector2() * myWidth + Vector2.up * myHeight;
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGorunded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
-        Debug.DrawLine(lineCastPos, lineCastPos + myTrans.right.toVector2() * 0.02f);
-        bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos + myTrans.right.toVector2(), enemyMask);
+       // Debug.DrawLine(lineCastPos, lineCastPos + myTrans.right.toVector2() * 0.02f);
+       // bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right.toVector2() * 0.2f, enemyMask);
 
-        if (!isGorunded || isBlocked)
+        if (!isGorunded )
         {
             Vector3 currRot = myTrans.eulerAngles;
             currRot.y += 180;

@@ -6,6 +6,7 @@ public class Follow : MonoBehaviour
 {
     public Transform player1, player2;
     public float minSizeY = 5f;
+    public GameObject Back;
 
     void SetCameraPos()
     {
@@ -33,24 +34,12 @@ public class Follow : MonoBehaviour
             camSizeX * Screen.height / Screen.width, minSizeY);
 
     }
-    void SetBackroundSize()
-    {
-        float minSizeX = minSizeY * Screen.width / Screen.height;
-
-        //multiplying by 0.5, because the ortographicSize is actually half the height
-        float width = Mathf.Abs(player1.position.x - player2.position.x) * 0.5f;
-        float height = Mathf.Abs(player1.position.y - player2.position.y) * 0.5f;
-
-        //computing the size
-        float camSizeX = Mathf.Max(width, minSizeX);
-        GetComponent<back>().orthographicSize = Mathf.Max(height,
-            camSizeX * Screen.height / Screen.width, minSizeY);
-    }
+    
 
     void Update()
     {
         SetCameraPos();
         SetCameraSize();
-        SetBackroundSize();
+        
     }
 }
