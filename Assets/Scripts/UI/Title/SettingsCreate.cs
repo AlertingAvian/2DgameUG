@@ -9,15 +9,17 @@ public class SettingsCreate : MonoBehaviour
 {
 
     public bool twoPlayer = false;
+    private int level = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadFile();
-        SaveFile();
+        SaveSettingsFile();
+        CheckControllerFile();
     }
 
-    public void SaveFile()
+    void SaveSettingsFile()
     {
         string destination = Application.persistentDataPath + "/settings.dat";
         FileStream file;
@@ -28,6 +30,22 @@ public class SettingsCreate : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
+    }
+
+    void CheckControllerFile()
+    {
+        string destination = Application.persistentDataPath + "/controller.dat";
+        FileStream file;
+        if (File.Exists(destination));
+        else 
+        {
+            file = File.Create(destination);
+            File.OpenWrite(destination);
+            int data = level;
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, data);
+            file.Close();
+        } 
     }
 
     void LoadFile()
