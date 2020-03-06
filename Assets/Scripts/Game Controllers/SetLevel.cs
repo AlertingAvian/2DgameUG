@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SetLevel : MonoBehaviour
 {
-    public int sceneIndex = SceneManager.GetActiveIndex().buildIndex;
+    private int sceneIndex; 
     public int level = 0;
 
     void Start()
     {
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
         level = sceneIndex - 2;
+        Debug.Log(level);
     }
 
     void SaveControllerFile()
@@ -24,12 +28,5 @@ public class SetLevel : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

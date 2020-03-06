@@ -36,8 +36,7 @@ public class SettingsCreate : MonoBehaviour
     {
         string destination = Application.persistentDataPath + "/controller.dat";
         FileStream file;
-        if (File.Exists(destination));
-        else 
+        if (!File.Exists(destination))
         {
             file = File.Create(destination);
             File.OpenWrite(destination);
