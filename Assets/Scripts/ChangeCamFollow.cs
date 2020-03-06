@@ -36,7 +36,6 @@ public class ChangeCamFollow : MonoBehaviour
         twoPlayer = data;
 
         file.Close();
-        Debug.Log(twoPlayer);
     }
     // Update is called once per frame
     void Update()
