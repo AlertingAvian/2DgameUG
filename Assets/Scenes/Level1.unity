@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -741,11 +742,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b184ab5b5512ca84ca198e5d9c210b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   player1: {fileID: 2115087771}
   player2: {fileID: 1837661704}
   minSizeY: 5
@@ -800,13 +801,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 3, z: -5}
+  m_LocalPosition: {x: 5.8, y: 2.79, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 564195115}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b50db8cb172b8b4b9b43a058bd191dd, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  interpVelocity: 0
+  minDistance: 0
+  followDistance: 0
+  target: {fileID: 1837661702}
+  offset: {x: 0, y: 0, z: 0}
+  speed: 25
 --- !u!1 &564195114
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564195114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -1050,8 +1069,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27ead9cef48a8344bb6347c1db75a260, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!68 &1382395920
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -7482,7 +7501,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -7559,8 +7578,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22ddef5fcf7d58e43ba72c97bbeb666d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   CeilingCheck: {fileID: 1460567762}
   amountOfJumps: 1
   movementSpeed: 4
@@ -7576,7 +7595,7 @@ MonoBehaviour:
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
-  movementSpeedTimer: 0.5
+  movementSpeedTimer: 0.0157375
   distanceBetweenImages: 0
   crouchSpeed: 2
   wallHopDirection: {x: 1, y: 0.5}
@@ -7584,7 +7603,7 @@ MonoBehaviour:
   SlideColl: {fileID: 0}
   groundCheck: {fileID: 1981644040}
   wallCheck: {fileID: 1712770939}
-  other: {fileID: 582347294}
+  other: {fileID: 1981644039}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 567
@@ -7684,26 +7703,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b379b728d7514c40a807357556f780c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   amountOfJumps: 1
   movementSpeed: 4
-  jumpForce: 16
+  jumpForce: 14
   groundCheckRadius: 0.2
-  wallCheckDistance: 0.1
+  wallCheckDistance: 0.4
   wallSlideSpeed: 2
-  movementForceInAir: 2
-  airDragMultiplier: 0.95
-  variableJumpHeightMultiplier: 0.5
-  wallHopForce: 16
-  wallJumpForce: 14
+  movementForceInAir: 1
+  airDragMultiplier: 1
+  variableJumpHeightMultiplier: 0.6
+  wallHopForce: 10
+  wallJumpForce: 20
   jumpTimerSet: 0
   turnTimerSet: 0
   wallJumpTimerSet: 0
   distanceBetweenImages: 0
   crouchSpeed: 2
   wallHopDirection: {x: 1, y: 0.5}
-  wallJumpDirection: {x: 1, y: 2}
+  wallJumpDirection: {x: 1, y: 0.5}
   groundCheck: {fileID: 2058767975}
   wallCheck: {fileID: 603307111}
   whatIsGround:
@@ -7727,7 +7746,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -7870,7 +7889,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f84d444dc40254b8fca01edd072e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   twoPlayer: 1
   player: {fileID: 2115087764}

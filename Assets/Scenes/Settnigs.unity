@@ -988,8 +988,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yourButton: {fileID: 1701279872}
   txt: {fileID: 1275417242}
+  playersButton: {fileID: 1701279876}
   twoPlayer: 0
-  playerButton: {fileID: 1701279876}
 --- !u!95 &1701279876
 Animator:
   serializedVersion: 3

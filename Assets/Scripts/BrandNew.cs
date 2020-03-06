@@ -57,7 +57,7 @@ public class BrandNew : MonoBehaviour
     public float wallJumpTimerSet = 0.5f;
     public float movementSpeedTimer = 0.5f;
     public float distanceBetweenImages;
-    public float crouchSpeed = 0.0f;
+    public float crouchSpeed = 5.0f;
     public Vector2 wallHopDirection;
     public Vector2 wallJumpDirection;
     public Transform SlideColl;
@@ -183,30 +183,28 @@ public class BrandNew : MonoBehaviour
     {
         if (isGrounded && Input.GetButtonDown("Down"))
         {
+
+            movementSpeedTimer -= Time.deltaTime;
             Slide = true;
             anim.SetBool("Down", true);
-            if (Slide)
-            {
-                movementSpeed = 5f;
-                movementSpeedTimer = 0.5f;
+            movementSpeed = crouchSpeed;
+            crouchSpeed = 5.0f;
+            
+           
 
-            }
-            else 
-            {
+        }
+        else if(Input.GetButtonUp("Down"))
+        {
                 Slide = false;
                 anim.SetBool("Down", false);
                 movementSpeed = 4f;
-             
-            }
-            if (Physics2D.OverlapCircle(CeilingCheck.position, CeilingRadius, whatIsGround))
-            {
-                if (Input.GetButtonUp("Down"))
-                Slide = true;
-                anim.SetBool("Down", true);
-
-            }
-
+            
         }
+        
+
+
+
+
     }
     private void CheckMovementDirection()
     {

@@ -13,14 +13,10 @@ public class PlayerDisable : MonoBehaviour
     void Start()
     {
         LoadFile();
-        Debug.Log(twoPlayer);
-        player.SetActive(twoPlayer);
-
     }
     void LoadFile()
     {
         string destination = Application.persistentDataPath + "/settings.dat";
-        Debug.Log(destination);
         FileStream file;
 
         if (File.Exists(destination)) file = File.OpenRead(destination);
@@ -32,16 +28,16 @@ public class PlayerDisable : MonoBehaviour
 
         BinaryFormatter bf = new BinaryFormatter();
         bool data = (bool)bf.Deserialize(file);
-        Debug.Log(data);
         file.Close();
 
         twoPlayer = data;
 
         file.Close();
+        Debug.Log(twoPlayer);
     }
     // Update is called once per frame
     void Update()
     {
-        
+        player.SetActive(twoPlayer);
     }
 }
