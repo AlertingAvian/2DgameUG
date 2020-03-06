@@ -24,7 +24,7 @@ public class EnemyBasic : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 lineCastPos = myTrans.position - myTrans.right * myWidth + Vector2.up * myHeight;
+        Vector2 lineCastPos = myTrans.position.toVector2() - myTrans.right.toVector2() * myWidth + Vector2.up * myHeight;
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGorunded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
         Debug.DrawLine(lineCastPos, lineCastPos + myTrans.right.toVector2() * 0.02f);
