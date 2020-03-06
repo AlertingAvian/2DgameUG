@@ -133,7 +133,7 @@ public class BrandNew : MonoBehaviour
             if (canWallJump && Input.GetButtonDown("Up"))
             {
 
-                rb.velocity = new Vector2(-rb.velocity.x, 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, 0.5f);
                 isWallSliding = false;
                 amountOfJumpsLeft = amountOfJumps;
                 amountOfJumpsLeft--;
@@ -184,11 +184,11 @@ public class BrandNew : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Down"))
         {
 
-            movementSpeedTimer -= Time.deltaTime;
+            
             Slide = true;
             anim.SetBool("Down", true);
             movementSpeed = crouchSpeed;
-            crouchSpeed = 5.0f;
+            crouchSpeed = 2.0f;
             
            
 
