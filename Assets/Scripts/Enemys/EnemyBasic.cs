@@ -33,7 +33,7 @@ public class EnemyBasic : MonoBehaviour
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
         //Check to see if there's a wall in front of us before moving forward
-        Debug.DrawLine(lineCastPos, lineCastPos - myTrans.right.toVector2() * .05f);
+        //Debug.DrawLine(lineCastPos, lineCastPos - myTrans.right.toVector2() * .05f);
         //bool isBlocked = Physics2D.Linecast(lineCastPos, lineCastPos - myTrans.right.toVector2() * .05f, enemyMask);
 
         //If theres no ground, turn around. Or if I hit a wall, turn around
