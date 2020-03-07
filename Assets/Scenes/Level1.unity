@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 1847
   speed: 4
 --- !u!50 &1382395924
 Rigidbody2D:
