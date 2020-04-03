@@ -14,7 +14,6 @@ public class SettingsCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadFile();
         SaveSettingsFile();
         CheckControllerFile();
     }
@@ -45,22 +44,5 @@ public class SettingsCreate : MonoBehaviour
             bf.Serialize(file, data);
             file.Close();
         } 
-    }
-
-    void LoadFile()
-    {
-        string destination = Application.persistentDataPath + "/settings.dat";
-        FileStream file;
-
-        if (File.Exists(destination)) file = File.OpenRead(destination);
-        else file = File.Create(destination);
-
-        BinaryFormatter bf = new BinaryFormatter();
-        bool data = (bool)bf.Deserialize(file);
-        file.Close();
-
-        twoPlayer = data;
-
-        file.Close();
     }
 }
