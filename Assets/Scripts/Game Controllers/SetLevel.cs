@@ -13,8 +13,8 @@ public class SetLevel : MonoBehaviour
     void Start()
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        level = sceneIndex - 2;
-        Debug.Log(level);
+        level = sceneIndex - 3;
+        SaveControllerFile();
     }
 
     void SaveControllerFile()
