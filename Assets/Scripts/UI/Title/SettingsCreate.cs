@@ -22,27 +22,34 @@ public class SettingsCreate : MonoBehaviour
     {
         string destination = Application.persistentDataPath + "/settings.dat";
         FileStream file;
-        if (File.Exists(destination)) file = File.OpenWrite(destination);
-        else file = File.Create(destination);
-
-        bool data = twoPlayer;
-        BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, data);
+        if (File.Exists(destination)) return;
+        else
+        {
+            file = File.Create(destination);
+            File.OpenWrite(destination);
+            bool data = twoPlayer;
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(file, data);
+            
+        }
         file.Close();
+
     }
 
     void CheckControllerFile()
     {
         string destination = Application.persistentDataPath + "/controller.dat";
         FileStream file;
-        if (!File.Exists(destination))
+        if (File.Exists(destination)) return;
+        else
         {
             file = File.Create(destination);
             File.OpenWrite(destination);
             int data = level;
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, data);
-            file.Close();
-        } 
+            
+        }
+        file.Close();
     }
 }
