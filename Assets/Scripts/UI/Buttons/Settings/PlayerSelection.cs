@@ -53,8 +53,16 @@ public class PlayerSelection : MonoBehaviour
         string destination = Application.persistentDataPath + "/settings.dat";
         FileStream file;
 
-        if (File.Exists(destination)) file = File.OpenRead(destination);
-        else file = File.Create(destination);
+        if (File.Exists(destination))
+        {
+            file = File.OpenRead(destination);
+            Debug.Log("File Exists");
+        }
+        else
+        {
+            file = File.Create(destination);
+            Debug.Log("Created File");
+        }
 
         BinaryFormatter bf = new BinaryFormatter();
         bool data = (bool)bf.Deserialize(file);

@@ -24,12 +24,14 @@ public class SettingsCreate : MonoBehaviour
         FileStream file;
         if (File.Exists(destination)) return;
         else
-        {
+        { 
             file = File.Create(destination);
-            File.OpenWrite(destination);
+            file.Dispose();
+            file = File.OpenWrite(destination);
             bool data = twoPlayer;
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, data);
+            file.Dispose();
             
         }
         file.Close();
@@ -44,11 +46,12 @@ public class SettingsCreate : MonoBehaviour
         else
         {
             file = File.Create(destination);
-            File.OpenWrite(destination);
+            file.Dispose();
+            file = File.OpenWrite(destination);
             int data = level;
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(file, data);
-            
+            file.Dispose();
         }
         file.Close();
     }
