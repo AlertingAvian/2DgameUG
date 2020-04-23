@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 522990375}
   - component: {fileID: 522990374}
   - component: {fileID: 522990377}
+  - component: {fileID: 522990378}
   m_Layer: 5
   m_Name: LevelOneButton
   m_TagString: Untagged
@@ -1073,6 +1074,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yourButton: {fileID: 522990374}
   buttonLevel: 1
+  buttonAnimator: {fileID: 0}
+--- !u!95 &522990378
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522990372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b544572dd9c30a943bddb0f2489f9110, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &629798989
 GameObject:
   m_ObjectHideFlags: 0

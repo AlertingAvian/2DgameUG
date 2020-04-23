@@ -11,23 +11,41 @@ public class LevelButton : MonoBehaviour
 
     public Button yourButton;
     public int buttonLevel;
+    public Animator buttonAnimator;
     private int currentLevel;
 
     // Start is called before the first frame update
     void Start()
     {
         LoadCurrentLevel();
+        SetButtonState();
+        Debug.Log(buttonLevel.ToString());
+        Debug.Log(currentLevel.ToString());
+        if (currentLevel > buttonLevel)
+        {
+            buttonAnimator.SetBool("levelComplete", true);
+            buttonAnimator.SetBool("levelLocked", false);
+            buttonAnimator.SetBool("currentLevel", false);
+        }
+        if (currentLevel < buttonLevel)
+        {
+            buttonAnimator.SetBool("levelComplete", false);
+            buttonAnimator.SetBool("levelLocked", true);
+            buttonAnimator.SetBool("currentLevel", false);
+        }
+        if (currentLevel == buttonLevel)
+        {
+            buttonAnimator.SetBool("levelComplete", false);
+            buttonAnimator.SetBool("levelLocked", false);
+            buttonAnimator.SetBool("currentLevel", true);
+        }
     }
 
     void LoadCurrentLevel()
     {
         string destination = Application.persistentDataPath + "/controller.dat";
         FileStream file;
-        if (File.Exists(destination))
-        {
-            file = File.OpenRead(destination);
-            Debug.Log(destination.ToString());
-        }
+        if (File.Exists(destination)) file = File.OpenRead(destination);
         else
         {
             Debug.LogError("File not found");
@@ -38,7 +56,11 @@ public class LevelButton : MonoBehaviour
         int data = (int)bf.Deserialize(file);
         file.Close();
         currentLevel = data;
-        Debug.Log(currentLevel.ToString());
+    }
+
+    void SetButtonState()
+    {
+        
     }
 
     // Update is called once per frame

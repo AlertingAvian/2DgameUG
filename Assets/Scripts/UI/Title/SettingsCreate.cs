@@ -9,7 +9,7 @@ public class SettingsCreate : MonoBehaviour
 {
 
     public bool twoPlayer = false;
-    private int level = 0;
+    private int level = 1;
 
     // Start is called before the first frame update
     void Start()
