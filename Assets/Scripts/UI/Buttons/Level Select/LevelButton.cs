@@ -10,6 +10,7 @@ public class LevelButton : MonoBehaviour
 {
 
     public Button yourButton;
+    public Text buttonText;
     public int buttonLevel;
     public Animator buttonAnimator;
     private int currentLevel;
@@ -19,25 +20,30 @@ public class LevelButton : MonoBehaviour
     {
         LoadCurrentLevel();
         SetButtonState();
-        Debug.Log(buttonLevel.ToString());
-        Debug.Log(currentLevel.ToString());
+        buttonText.text = "Level " + buttonLevel.ToString();
         if (currentLevel > buttonLevel)
         {
             buttonAnimator.SetBool("levelComplete", true);
             buttonAnimator.SetBool("levelLocked", false);
             buttonAnimator.SetBool("currentLevel", false);
+
+            yourButton.interactable = false;
         }
         if (currentLevel < buttonLevel)
         {
             buttonAnimator.SetBool("levelComplete", false);
             buttonAnimator.SetBool("levelLocked", true);
             buttonAnimator.SetBool("currentLevel", false);
+
+            yourButton.interactable = false;
         }
         if (currentLevel == buttonLevel)
         {
             buttonAnimator.SetBool("levelComplete", false);
             buttonAnimator.SetBool("levelLocked", false);
             buttonAnimator.SetBool("currentLevel", true);
+
+            yourButton.interactable = true;
         }
     }
 
