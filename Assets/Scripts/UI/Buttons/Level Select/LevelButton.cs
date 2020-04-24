@@ -20,6 +20,29 @@ public class LevelButton : MonoBehaviour
     {
         LoadCurrentLevel();
         SetButtonState();
+
+        yourButton.onClick.AddListener(TaskOnClick);
+    }
+
+    void LoadCurrentLevel()
+    {
+        string destination = Application.persistentDataPath + "/controller.dat";
+        FileStream file;
+        if (File.Exists(destination)) file = File.OpenRead(destination);
+        else
+        {
+            Debug.LogError("File not found");
+            return;
+        }
+
+        BinaryFormatter bf = new BinaryFormatter();
+        int data = (int)bf.Deserialize(file);
+        file.Close();
+        currentLevel = data;
+    }
+
+    void SetButtonState()
+    {
         buttonText.text = "Level " + buttonLevel.ToString();
         if (currentLevel > buttonLevel)
         {
@@ -47,26 +70,9 @@ public class LevelButton : MonoBehaviour
         }
     }
 
-    void LoadCurrentLevel()
+    void TaskOnClick()
     {
-        string destination = Application.persistentDataPath + "/controller.dat";
-        FileStream file;
-        if (File.Exists(destination)) file = File.OpenRead(destination);
-        else
-        {
-            Debug.LogError("File not found");
-            return;
-        }
-
-        BinaryFormatter bf = new BinaryFormatter();
-        int data = (int)bf.Deserialize(file);
-        file.Close();
-        currentLevel = data;
-    }
-
-    void SetButtonState()
-    {
-        
+        SceneManager.LoadScene(buttonLevel+3);
     }
 
     // Update is called once per frame
